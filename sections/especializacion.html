@@ -1,70 +1,174 @@
-<section id="especializacion" class="py-20 bg-gray-900 text-white text-center">
-    <div class="container mx-auto grid md:grid-cols-3 gap-8 px-6">
-        <!-- Desarrollo Web -->
-        <div
-            class="p-6 bg-gray-800 rounded-lg shadow-lg hover:bg-white hover:text-gray-900 hover:shadow-2xl hover:scale-105 hover:translate-y-2 transition-all duration-300 ease-in-out">
-            <div class="flex items-center justify-center mb-4">
-                <i class="fab fa-html5 text-4xl text-orange-500"></i> <!-- HTML5 -->
-                <i class="fab fa-css3-alt text-4xl text-blue-500 ml-4"></i> <!-- CSS3 -->
-                <i class="fab fa-js-square text-4xl text-yellow-500 ml-4"></i> <!-- JavaScript -->
-                <i class="fab fa-vuejs text-4xl text-green-500 ml-4"></i> <!-- Vue.js -->
-                <i class="fab fa-react text-4xl text-cyan-500 ml-4"></i> <!-- React.js -->
-                <i class="fab fa-node text-4xl text-green-500 ml-4"></i> <!-- Node.js -->
-            </div>
-            <h3 class="text-2xl font-semibold mb-2">Desarrollador Web</h3>
-            <p class="text-gray-400">Experiencia en el desarrollo de aplicaciones web modernas con tecnologías como
-                Vue.js, React.js y Node.js. He trabajado en proyectos desde aplicaciones simples hasta soluciones
-                completas y escalables, siempre priorizando la experiencia del usuario y el rendimiento del sistema.
-                Con una sólida comprensión de las mejores prácticas de desarrollo front-end y back-end, me esfuerzo
-                por crear aplicaciones web intuitivas, rápidas y fáciles de usar.</p>
-            <p class="text-gray-400 mt-4">Mi enfoque está en el diseño de interfaces limpias y funcionales que
-                respondan a las necesidades de los usuarios, con un especial énfasis en la usabilidad y accesibilidad.
-                Utilizo herramientas modernas como Tailwind CSS para asegurar que el diseño sea adaptativo y responsive,
-                proporcionando una experiencia de usuario excelente en cualquier dispositivo.</p>
+<section id="especializacion" class="relative py-24 bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+    <!-- Efectos de fondo decorativos -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full bg-purple-500 filter blur-3xl animate-float-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-blue-500 filter blur-3xl animate-float-medium"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <!-- Título con efecto -->
+        <div class="text-center mb-20">
+            <h2 class="text-5xl md:text-6xl font-bold mb-4">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">Mis Especializaciones</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mx-auto"></div>
         </div>
 
-        <!-- Backend & APIs -->
-        <div
-            class="p-6 bg-gray-800 rounded-lg shadow-lg hover:bg-white hover:text-gray-900 hover:shadow-2xl hover:scale-105 hover:translate-y-2 transition-all duration-300 ease-in-out">
-            <div class="flex items-center justify-center mb-4">
-                <i class="fab fa-node text-4xl text-green-500"></i> <!-- Node.js -->
-                <i class="fas fa-cloud text-4xl text-blue-600 ml-4"></i> <!-- Cloud (AWS, Oracle) -->
-                <i class="fab fa-docker text-4xl text-cyan-500 ml-4"></i> <!-- Docker -->
-                <i class="fab fa-java text-4xl text-red-600 ml-4"></i> <!-- Java -->
+        <div class="grid md:grid-cols-3 gap-10">
+            <!-- Desarrollo Web -->
+            <div class="group relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <div class="relative h-full bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <div class="tech-icon">
+                            <i class="fab fa-html5 text-4xl text-orange-500"></i>
+                            <span class="tech-tooltip">HTML5</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-css3-alt text-4xl text-blue-500"></i>
+                            <span class="tech-tooltip">CSS3</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-js-square text-4xl text-yellow-500"></i>
+                            <span class="tech-tooltip">JavaScript</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-react text-4xl text-cyan-500"></i>
+                            <span class="tech-tooltip">React</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-vuejs text-4xl text-green-500"></i>
+                            <span class="tech-tooltip">Vue.js</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-node-js text-4xl text-green-400"></i>
+                            <span class="tech-tooltip">Node.js</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-blue-400">Desarrollo Web</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Creación de aplicaciones web modernas con React, Vue y Node.js, desde soluciones simples hasta sistemas escalables, priorizando UX y rendimiento.</p>
+                        <p>Diseño de interfaces limpias y funcionales con Tailwind CSS, asegurando adaptabilidad y accesibilidad en todos los dispositivos.</p>
+                    </div>
+                    <div class="mt-6 flex justify-center">
+                        <span class="inline-block px-4 py-2 bg-gray-700 rounded-full text-sm font-medium text-blue-300">+15 proyectos</span>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-2">Desarrollador Backend & APIs</h3>
-            <p class="text-gray-400">Diseño y consumo de APIs REST con Node.js y Express, integrando servicios en la
-                nube con AWS y Oracle Cloud. Mi experiencia en desarrollo backend incluye la creación de soluciones
-                robustas y eficientes que pueden manejar grandes cantidades de datos y tráfico. Utilizo patrones de
-                diseño sólidos como MVC y servicios RESTful para garantizar la escalabilidad y el mantenimiento a largo
-                plazo de las aplicaciones.</p>
-            <p class="text-gray-400 mt-4">A lo largo de mis proyectos, me he enfocado en la seguridad, la integridad
-                de los datos y la optimización de rendimiento. He trabajado con bases de datos SQL y NoSQL, como MySQL,
-                AWS RDS y MongoDB, para garantizar la flexibilidad y eficiencia en el manejo de datos. Además, cuento
-                con
-                experiencia en la implementación de servicios en la nube para aprovechar la escalabilidad y alta
-                disponibilidad que ofrecen plataformas como AWS y Oracle Cloud.</p>
-        </div>
 
-        <!-- Análisis de Datos -->
-        <div
-            class="p-6 bg-gray-800 rounded-lg shadow-lg hover:bg-white hover:text-gray-900 hover:shadow-2xl hover:scale-105 hover:translate-y-2 transition-all duration-300 ease-in-out">
-            <div class="flex items-center justify-center mb-4">
-                <i class="fas fa-chart-line text-4xl text-green-500"></i> <!-- Power BI -->
-                <i class="fas fa-database text-4xl text-gray-500 ml-4"></i> <!-- Base de Datos -->
-                <i class="fab fa-pinterest text-4xl text-red-600 ml-4"></i> <!-- Pentaho -->
-                <i class="fas fa-cogs text-4xl text-gray-400 ml-4"></i> <!-- ETL -->
+            <!-- Backend & APIs -->
+            <div class="group relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <div class="relative h-full bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <div class="tech-icon">
+                            <i class="fab fa-node text-4xl text-green-500"></i>
+                            <span class="tech-tooltip">Node.js</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-aws text-4xl text-orange-500"></i>
+                            <span class="tech-tooltip">AWS</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-4xl text-blue-400"></i>
+                            <span class="tech-tooltip">Oracle</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-docker text-4xl text-cyan-500"></i>
+                            <span class="tech-tooltip">Docker</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-java text-4xl text-red-500"></i>
+                            <span class="tech-tooltip">Java</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Backend & APIs</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Diseño de APIs REST con Node.js y Express, integrando servicios cloud (AWS, Oracle) para soluciones escalables y seguras.</p>
+                        <p>Experiencia con bases de datos SQL/NoSQL (MySQL, MongoDB) y arquitecturas microservicios, optimizando rendimiento y disponibilidad.</p>
+                    </div>
+                    <div class="mt-6 flex justify-center">
+                        <span class="inline-block px-4 py-2 bg-gray-700 rounded-full text-sm font-medium text-green-300">+10 APIs</span>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-2">Analista de Datos</h3>
-            <p class="text-gray-400">Transformación y análisis de datos con Power BI, ETL y Pentaho para la toma de
-                decisiones estratégicas. He trabajado en proyectos de análisis de datos que implican la integración y
-                transformación de grandes volúmenes de información para facilitar la visualización de datos y la toma de
-                decisiones empresariales. Utilizo herramientas avanzadas para limpiar y procesar los datos, asegurando
-                su calidad y relevancia.</p>
-            <p class="text-gray-400 mt-4">Mi enfoque está en crear paneles interactivos y dinámicos con Power BI que
-                permiten a los usuarios explorar sus datos de manera eficiente. Además, he implementado procesos ETL
-                (Extract, Transform, Load) para automatizar la ingesta y transformación de datos, reduciendo el tiempo
-                de procesamiento y mejorando la precisión de los informes.</p>
+
+            <!-- Análisis de Datos -->
+            <div class="group relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <div class="relative h-full bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-line text-4xl text-green-400"></i>
+                            <span class="tech-tooltip">Power BI</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-4xl text-blue-300"></i>
+                            <span class="tech-tooltip">SQL</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-cogs text-4xl text-gray-300"></i>
+                            <span class="tech-tooltip">ETL</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-cloud text-4xl text-blue-400"></i>
+                            <span class="tech-tooltip">Big Data</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Análisis de Datos</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Transformación y análisis de datos con Power BI y procesos ETL, generando insights para decisiones estratégicas.</p>
+                        <p>Creación de dashboards interactivos y automatización de flujos de datos, mejorando precisión y eficiencia en reportes empresariales.</p>
+                    </div>
+                    <div class="mt-6 flex justify-center">
+                        <span class="inline-block px-4 py-2 bg-gray-700 rounded-full text-sm font-medium text-purple-300">+20 reportes</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <style>
+        .tech-icon {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+        .tech-tooltip {
+            position: absolute;
+            bottom: -2rem;
+            opacity: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .tech-icon:hover .tech-tooltip {
+            opacity: 1;
+            bottom: -1.75rem;
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-15px) translateX(-15px); }
+        }
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+    </style>
 </section>
