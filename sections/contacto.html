@@ -1,0 +1,96 @@
+<section id="contacto" class="bg-white py-32">
+    <div class="container mx-auto max-w-7xl px-6 lg:px-32 py-20 bg-gray-200 rounded-xl shadow-2xl">
+
+        <!-- Título de la Sección -->
+        <h2 class="text-4xl font-extrabold text-center text-purple-700 mb-12">Contacto</h2>
+
+        <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+            <!-- Información Personal (Columna Izquierda) -->
+            <div class="w-full md:w-1/2 text-center md:text-left text-lg text-gray-700 leading-relaxed">
+                <p class="mb-6">
+                    Estoy entusiasmado por la oportunidad de compartir mi experiencia y conocimientos contigo. Cada
+                    proyecto es un nuevo desafío, y me apasiona encontrar soluciones innovadoras que marquen la
+                    diferencia.
+                </p>
+                <p class="mb-6">
+                    Si tienes preguntas, ideas o simplemente quieres explorar nuevas posibilidades en el mundo de la
+                    tecnología, estaré encantado de escucharte. Juntos podemos transformar una visión en una realidad
+                    tangible y exitosa.
+                </p>
+                <p class="mb-6 italic font-light text-gray-500">
+                    No olvides que todo gran logro comienza con una decisión: dar el primer paso. ¿Listo para empezar?
+                    ¡Hablemos y hagamos que las cosas sucedan!
+                </p>
+
+                <p class="font-semibold text-2xl text-purple-700">Sebastián Urízar Suazo</p>
+                <p class="text-xl text-gray-600 flex items-center justify-center md:justify-start gap-2">
+                    <i class="fas fa-map-marker-alt text-purple-500"></i> Lota - Chile
+                </p>
+            </div>
+
+            <form id="contactForm" onsubmit="sendEmail(event)" class="space-y-6">
+                <!-- Nombre -->
+                <input type="text" id="name" name="name" placeholder="Tu Nombre" required
+                    class="w-full p-4 rounded-lg bg-gray-200 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200">
+
+                <!-- Correo -->
+                <input type="email" id="email" name="email" placeholder="Tu Correo" required
+                    class="w-full p-4 rounded-lg bg-gray-200 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200">
+
+                <!-- Mensaje -->
+                <textarea id="message" name="message" placeholder="Tu Mensaje" required
+                    class="w-full p-4 rounded-lg bg-gray-200 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"></textarea>
+
+                <!-- Botón Enviar -->
+                <button type="submit"
+                    class="bg-purple-700 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-purple-800 transition-all duration-300 w-full text-xl font-semibold">
+                    Enviar
+                </button>
+            </form>
+
+            <script>
+                function sendEmail(event) {
+                    event.preventDefault();
+
+                    var form = document.getElementById('contactForm');
+                    var formData = new FormData(form);
+
+                    emailjs.sendForm('service_yi2dbrp', 'template_021zkl9', formData)
+                        .then(function (response) {
+                            console.log('Correo enviado:', response);
+                            alert('¡Mensaje enviado correctamente!');
+                        }, function (error) {
+                            console.log('Error:', error);
+                            alert('Hubo un problema al enviar el mensaje.');
+                        });
+                }
+            </script>
+
+
+            <script type="text/javascript">
+                (function () {
+                    emailjs.init("sebastianurizar05@gmail.com");
+                })();
+            </script>
+
+
+            <!-- Opciones de Contacto Directo -->
+            <div class="text-center mt-12">
+                <p class="text-lg text-gray-700 mb-4 font-light">O escríbeme por: </p>
+                <div class="flex justify-center space-x-8">
+                    <!-- Enlace WhatsApp -->
+                    <a href="https://wa.me/56930883662" target="_blank"
+                        class="text-purple-500 hover:text-purple-400 text-3xl transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <!-- Enlace Correo -->
+                    <a href="mailto:sebastianurizar05@gmail.com"
+                        class="text-purple-500 hover:text-purple-400 text-3xl transition-all duration-300 transform hover:scale-110">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+</section>

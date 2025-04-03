@@ -1,0 +1,57 @@
+<!-- Sección Sobre Mí -->
+<section id="sobre-mi" class="py-20 bg-gray-200 shadow-lg rounded-lg mt-20 lg:mt-32 lg:mb-12 lg:ml-8 lg:mr-10">
+
+    <div class="flex flex-col lg:flex-row items-start gap-8"> <!-- Se aumentó el espacio entre imagen y texto -->
+
+<!-- Imagen al principio -->
+<div class="lg:w-1/3 flex justify-start lg:ml-4 p-4">
+    <img id="scrollImage" src="assets/sebastianSF.png" alt="Sebastián Urizar"
+        class="w-full max-w-xs h-auto object-contain transform translate-x-[0%] transition-all duration-700 ease-out hover:scale-105 
+        border-4 border-purple-600 rounded-xl shadow-lg hover:shadow-2xl" />
+</div>
+
+
+        <script>
+            window.addEventListener('scroll', function () {
+                const image = document.getElementById('scrollImage');
+                const imagePosition = image.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.5;
+
+                // Comprobar si la imagen está en la vista
+                if (imagePosition < screenPosition) {
+                    image.classList.add('opacity-100', 'translate-x-0');
+                } else {
+                    // Si la imagen sale de la vista, puedes devolverla a su posición inicial
+                    image.classList.remove('opacity-100', 'translate-x-0');
+                }
+            });
+        </script>
+
+        <!-- Contenedor de información -->
+        <div class="lg:w-2/3 text-lg text-gray-700">
+
+            <!-- Título alineado a la izquierda -->
+            <h2 class="text-4xl font-bold text-purple-600 mb-6 text-left">Sobre Mí</h2>
+
+            <!-- Párrafo con margen a la izquierda, margen inferior y justificado -->
+            <p class="mt-4  mr-10 text-justify text-left">
+                Soy ingeniero informático con una fuerte pasión por crear soluciones innovadoras que fusionan
+                creatividad y solidez técnica. Me especializo en desarrollar proyectos que no solo son funcionales, sino
+                también visualmente atractivos, asegurando que cada detalle esté cuidadosamente diseñado para maximizar
+                la experiencia del usuario y alcanzar los objetivos estratégicos de la empresa. Mi enfoque en la calidad
+                y la eficiencia me impulsa a entregar resultados que no solo cumplen, sino que superan las expectativas,
+                generando un impacto real y duradero. Mi capacidad para adaptarme rápidamente a nuevos desafíos y mi
+                compromiso con la mejora continua me posicionan como un profesional altamente valioso para cualquier
+                equipo.
+            </p>
+
+            <!-- Botón alineado a la izquierda -->
+            <a href="resume/SebastianIgnacioFranciscoUrizarSuazoResume.pdf" download
+                class="mt-6 inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-purple-700 transition-all">
+                <i class="fas fa-download"></i> <!-- Icono de FontAwesome -->
+                Descargar CV
+            </a>
+        </div>
+
+    </div>
+</section>
