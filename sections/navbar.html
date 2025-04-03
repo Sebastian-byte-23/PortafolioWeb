@@ -6,12 +6,22 @@
         </a>
 
         <!-- Enlaces de la Navegación -->
-        <ul class="flex space-x-8 text-lg">
-            <li><a href="#sobre-mi" class="nav-link hover:text-gray-300 transition-all">Sobre Mí</a></li>
-            <li><a href="#especializacion" class="nav-link hover:text-gray-300 transition-all">Especialización</a></li>
-            <li><a href="#tecnologias" class="nav-link hover:text-gray-300 transition-all">Tecnologías</a></li>
-            <li><a href="#proyectos" class="nav-link hover:text-gray-300 transition-all">Proyectos</a></li>
-            <li><a href="#contacto" class="nav-link hover:text-gray-300 transition-all">Contacto</a></li>
+        <ul class="flex space-x-4 text-lg">
+            <li>
+                <a href="#sobre-mi" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600/30 hover:text-white transition-all duration-300">Sobre Mí</a>
+            </li>
+            <li>
+                <a href="#especializacion" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600/30 hover:text-white transition-all duration-300">Especialización</a>
+            </li>
+            <li>
+                <a href="#tecnologias" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600/30 hover:text-white transition-all duration-300">Tecnologías</a>
+            </li>
+            <li>
+                <a href="#proyectos" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600/30 hover:text-white transition-all duration-300">Proyectos</a>
+            </li>
+            <li>
+                <a href="#contacto" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600/30 hover:text-white transition-all duration-300">Contacto</a>
+            </li>
 
             <!-- Enlaces de Contacto -->
             <li class="flex items-center space-x-4">
@@ -49,12 +59,27 @@
         }
     });
 
-    // Resaltar el enlace activo
+    // Resaltar el enlace activo al hacer scroll
+    const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.forEach(link => link.classList.remove('text-purple-300')); // Quitar resaltado de todos
-            link.classList.add('text-purple-300'); // Resaltar el enlace activo
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= (sectionTop - 300)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('bg-purple-600/80', 'text-white');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('bg-purple-600/80', 'text-white');
+            }
         });
     });
 </script>
