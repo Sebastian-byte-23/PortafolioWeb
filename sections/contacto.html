@@ -121,3 +121,30 @@
 
         </div>
 </section>
+
+<!-- Botón de volver arriba -->
+<button id="backToTop" class="fixed bottom-8 right-8 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 opacity-0 invisible transform translate-y-4" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up text-xl"></i>
+</button>
+
+<script>
+    // Mostrar/ocultar botón al hacer scroll
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+    });
+
+    // Función para volver arriba
+    document.getElementById('backToTop').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
