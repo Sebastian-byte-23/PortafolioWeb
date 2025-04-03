@@ -1,57 +1,87 @@
 <!-- Sección Sobre Mí -->
-<section id="sobre-mi" class="py-20 bg-gray-200 shadow-lg rounded-lg mt-20 lg:mt-32 lg:mb-12 lg:ml-8 lg:mr-10">
+<section id="sobre-mi" class="py-16 bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rounded-2xl my-16 mx-4 lg:mx-8 xl:mx-16">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Imagen con efecto más profesional -->
+            <div class="lg:w-2/5 flex justify-center">
+                <div class="relative group">
+                    <img id="profileImage" src="assets/sebastianSF.png" alt="Sebastián Urizar"
+                        class="w-full max-w-md h-auto object-cover rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105
+                        border-4 border-purple-500 border-opacity-70" />
+                    <div class="absolute inset-0 bg-purple-500 bg-opacity-10 rounded-2xl mix-blend-multiply group-hover:opacity-0 transition-opacity duration-500"></div>
+                </div>
+            </div>
 
-    <div class="flex flex-col lg:flex-row items-start gap-8"> <!-- Se aumentó el espacio entre imagen y texto -->
+            <!-- Contenedor de información -->
+            <div class="lg:w-3/5">
+                <!-- Título con decoración -->
+                <div class="relative mb-8">
+                    <h2 class="text-4xl md:text-5xl font-bold text-purple-600 mb-2">Sobre Mí</h2>
+                    <div class="w-20 h-1 bg-purple-400 rounded-full"></div>
+                </div>
 
-<!-- Imagen al principio -->
-<div class="lg:w-1/3 flex justify-start lg:ml-4 p-4">
-    <img id="scrollImage" src="assets/sebastianSF.png" alt="Sebastián Urizar"
-        class="w-full max-w-xs h-auto object-contain transform translate-x-[0%] transition-all duration-700 ease-out hover:scale-105 
-        border-4 border-purple-600 rounded-xl shadow-lg hover:shadow-2xl" />
-</div>
+                <!-- Texto organizado en puntos clave -->
+                <div class="space-y-6 text-gray-700 text-lg">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 mr-4 text-purple-500">
+                            <i class="fas fa-laptop-code text-xl"></i>
+                        </div>
+                        <p>
+                            <span class="font-semibold text-purple-600">Ingeniero Informático</span> con pasión por crear soluciones innovadoras que fusionan creatividad y solidez técnica.
+                        </p>
+                    </div>
 
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 mr-4 text-purple-500">
+                            <i class="fas fa-paint-brush text-xl"></i>
+                        </div>
+                        <p>
+                            Especializado en desarrollar proyectos <span class="font-semibold">funcionales y visualmente atractivos</span>, con atención meticulosa al detalle para maximizar la experiencia del usuario.
+                        </p>
+                    </div>
 
-        <script>
-            window.addEventListener('scroll', function () {
-                const image = document.getElementById('scrollImage');
-                const imagePosition = image.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.5;
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 mr-4 text-purple-500">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <p>
+                            Enfoque en <span class="font-semibold">calidad y eficiencia</span> para entregar resultados que superan expectativas y generan impacto real.
+                        </p>
+                    </div>
 
-                // Comprobar si la imagen está en la vista
-                if (imagePosition < screenPosition) {
-                    image.classList.add('opacity-100', 'translate-x-0');
-                } else {
-                    // Si la imagen sale de la vista, puedes devolverla a su posición inicial
-                    image.classList.remove('opacity-100', 'translate-x-0');
-                }
-            });
-        </script>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 mr-4 text-purple-500">
+                            <i class="fas fa-lightbulb text-xl"></i>
+                        </div>
+                        <p>
+                            Capacidad de <span class="font-semibold">adaptación rápida</span> y compromiso con la mejora continua, aportando valor significativo a cualquier equipo.
+                        </p>
+                    </div>
+                </div>
 
-        <!-- Contenedor de información -->
-        <div class="lg:w-2/3 text-lg text-gray-700">
-
-            <!-- Título alineado a la izquierda -->
-            <h2 class="text-4xl font-bold text-purple-600 mb-6 text-left">Sobre Mí</h2>
-
-            <!-- Párrafo con margen a la izquierda, margen inferior y justificado -->
-            <p class="mt-4  mr-10 text-justify text-left">
-                Soy <strong>ingeniero informático</strong> con una fuerte pasión por crear <strong>soluciones innovadoras</strong> que fusionan
-                <strong>creatividad</strong> y <strong>solidez técnica</strong>. Me especializo en desarrollar proyectos que no solo son <strong>funcionales</strong>, sino
-                también <strong>visualmente atractivos</strong>, asegurando que cada detalle esté cuidadosamente diseñado para maximizar
-                la <strong>experiencia del usuario</strong> y alcanzar los <strong>objetivos estratégicos</strong> de la empresa. Mi enfoque en la <strong>calidad</strong>
-                y la <strong>eficiencia</strong> me impulsa a entregar resultados que no solo cumplen, sino que <strong>superan las expectativas</strong>,
-                generando un <strong>impacto real y duradero</strong>. Mi capacidad para <strong>adaptarme rápidamente</strong> a nuevos desafíos y mi
-                <strong>compromiso</strong> con la mejora continua me posicionan como un profesional <strong>altamente valioso</strong> para cualquier
-                equipo.
-            </p>
-
-            <!-- Botón alineado a la izquierda -->
-            <a href="resume/SebastianIgnacioFranciscoUrizarSuazoResume.pdf" download
-                class="mt-6 inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-purple-700 transition-all">
-                <i class="fas fa-download"></i> <!-- Icono de FontAwesome -->
-                Descargar CV
-            </a>
+                <!-- Botón mejorado -->
+                <div class="mt-10">
+                    <a href="resume/SebastianIgnacioFranciscoUrizarSuazoResume.pdf" download
+                        class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl text-lg font-semibold hover:from-purple-700 hover:to-purple-600 transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fas fa-download"></i>
+                        Descargar CV
+                    </a>
+                </div>
+            </div>
         </div>
-
     </div>
 </section>
+
+<script>
+    // Animación más suave para la imagen
+    window.addEventListener('scroll', function() {
+        const image = document.getElementById('profileImage');
+        const imagePosition = image.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (imagePosition < screenPosition) {
+            image.style.opacity = '1';
+            image.style.transform = 'translateY(0)';
+        }
+    });
+</script>
