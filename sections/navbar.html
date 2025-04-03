@@ -1,0 +1,60 @@
+<nav class="bg-transparent p-4 fixed w-full top-0 z-10 transition-all duration-300 text-white shadow-lg" id="navbar">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo o Título -->
+        <a href="#inicio">
+            <h1 class="text-2xl font-bold text-white hover:text-gray-200 cursor-pointer transition-all">Mi Portafolio</h1>
+        </a>
+
+        <!-- Enlaces de la Navegación -->
+        <ul class="flex space-x-8 text-lg">
+            <li><a href="#sobre-mi" class="nav-link hover:text-gray-300 transition-all">Sobre Mí</a></li>
+            <li><a href="#especializacion" class="nav-link hover:text-gray-300 transition-all">Especialización</a></li>
+            <li><a href="#tecnologias" class="nav-link hover:text-gray-300 transition-all">Tecnologías</a></li>
+            <li><a href="#proyectos" class="nav-link hover:text-gray-300 transition-all">Proyectos</a></li>
+            <li><a href="#contacto" class="nav-link hover:text-gray-300 transition-all">Contacto</a></li>
+
+            <!-- Enlaces de Contacto -->
+            <li class="flex items-center space-x-4">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/56930883662" target="_blank" class="hover:text-green-500 transition-all">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+                <!-- Correo Electrónico -->
+                <a href="mailto:sebastianurizar05@gmail.com" class="hover:text-red-500 transition-all">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Agregar iconos de Font Awesome (solo una vez) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+    window.addEventListener('scroll', function () {
+        var navbar = document.getElementById("navbar");
+        var inicioSection = document.getElementById("inicio");
+
+        // Verifica si estás en la sección de "inicio"
+        var inicioPosition = inicioSection.offsetTop;
+        var currentScrollPosition = window.scrollY;
+
+        if (currentScrollPosition > inicioPosition) {
+            navbar.classList.add("bg-purple-600"); // Añadir color morado
+            navbar.classList.remove("bg-transparent"); // Eliminar el color transparente
+        } else {
+            navbar.classList.add("bg-transparent"); // Restaurar transparente
+            navbar.classList.remove("bg-purple-600"); // Eliminar color morado
+        }
+    });
+
+    // Resaltar el enlace activo
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.forEach(link => link.classList.remove('text-purple-300')); // Quitar resaltado de todos
+            link.classList.add('text-purple-300'); // Resaltar el enlace activo
+        });
+    });
+</script>
