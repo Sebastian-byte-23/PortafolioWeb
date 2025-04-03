@@ -1,26 +1,72 @@
-<section id="inicio" class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600">
-    <!-- Efecto de partículas -->
-    <div id="particles-js" class="absolute inset-0"></div>
+<section id="inicio" class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700">
+    <!-- Efecto de partículas mejorado -->
+    <div id="particles-js" class="absolute inset-0 opacity-70"></div>
 
-    <!-- Fondo de la sección con filtro -->
-    <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-80"
-        style="background-image: url('assets/codigo.jpeg'); filter: blur(5px);">
+    <!-- Fondo con efecto parallax -->
+    <div class="parallax-bg absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-30"
+        style="background-image: url('assets/codigo.jpeg');" data-speed="0.4">
     </div>
 
-    <!-- Contenido principal con un toque más estilizado -->
-    <div class="relative z-10 flex flex-col items-center gap-6 text-white px-4 sm:px-6 lg:px-8">
-        <img src="assets/sebastian.jpg" alt="Sebastián Urizar"
-            class="w-48 h-48 rounded-full object-cover shadow-2xl transform transition-transform hover:rotate-12 hover:scale-110 duration-700 ease-in-out">
-        <div class="mt-6">
-            <h2 class="text-5xl font-extrabold text-shadow-lg animate__animated animate__fadeIn">Sebastián Urízar Suazo</h2>
-            <p class="text-xl text-gray-300 mt-2 animate__animated animate__fadeIn animate__delay-1s">Ingeniero en Informática</p>
+    <!-- Contenido principal -->
+    <div class="relative z-10 flex flex-col items-center gap-8 text-white px-6 max-w-4xl mx-auto">
+        <!-- Foto de perfil con efecto más profesional -->
+        <div class="relative group">
+            <div class="absolute -inset-2 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-all duration-500"></div>
+            <img src="assets/sebastian.jpg" alt="Sebastián Urizar"
+                class="relative w-56 h-56 rounded-full object-cover border-4 border-white/20 shadow-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:rotate-3">
         </div>
 
-        <!-- Botón de acción con efecto hover -->
-        <a href="#sobre-mi" class="mt-8 inline-flex items-center gap-2 bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-purple-800 transition-all transform hover:scale-110 duration-300">
-            <i class="fas fa-arrow-down"></i> Ver más
-        </a>
+        <!-- Texto principal con animación escalonada -->
+        <div class="space-y-4">
+            <h2 class="text-5xl md:text-6xl font-bold tracking-tight animate__animated animate__fadeInDown">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">Sebastián Urízar Suazo</span>
+            </h2>
+            <div class="overflow-hidden">
+                <p class="text-2xl md:text-3xl font-medium text-blue-100 animate__animated animate__fadeInUp animate__delay-1s">
+                    Ingeniero en Informática
+                </p>
+            </div>
+            <div class="pt-2 overflow-hidden">
+                <p class="text-lg text-blue-100/90 animate__animated animate__fadeInUp animate__delay-1s5">
+                    Desarrollo soluciones innovadoras con enfoque en calidad y experiencia de usuario
+                </p>
+            </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            <a href="#sobre-mi" 
+                class="relative inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl text-lg font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 group">
+                <span class="relative z-10">Conóceme</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300 group-hover:translate-y-1"></i>
+                <div class="absolute inset-0 rounded-xl overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+            </a>
+            
+            <a href="#contacto" 
+                class="relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 group">
+                <span class="relative z-10">Contáctame</span>
+                <i class="fas fa-paper-plane text-sm transition-transform duration-300 group-hover:translate-y-1"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Flecha indicadora de scroll -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-10 h-10 border-2 border-white/50 rounded-full flex items-center justify-center">
+            <i class="fas fa-chevron-down text-white/70"></i>
+        </div>
     </div>
 </section>
+
+<script>
+    // Efecto parallax para el fondo
+    document.addEventListener('scroll', function() {
+        const parallaxBg = document.querySelector('.parallax-bg');
+        const scrollPosition = window.pageYOffset;
+        parallaxBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+    });
+</script>
 
 
