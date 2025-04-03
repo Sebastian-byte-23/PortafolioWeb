@@ -1,67 +1,119 @@
-<nav class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-500 text-white backdrop-blur-sm" id="navbar">
+<nav class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-500 text-white backdrop-blur-sm border-b border-transparent" id="navbar">
     <div class="container mx-auto flex justify-between items-center">
-        <!-- Logo o Título -->
-        <a href="#inicio">
-            <h1 class="text-2xl font-bold text-white hover:text-gray-200 cursor-pointer transition-all">Mi Portafolio</h1>
+        <!-- Logo con efecto -->
+        <a href="#inicio" class="group">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fas fa-code text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r from-purple-400 to-blue-300 transition-all duration-300">
+                    Sebastián Urízar
+                </h1>
+            </div>
         </a>
 
-        <!-- Enlaces de la Navegación -->
-        <ul class="flex space-x-4 text-lg">
-            <li>
-                <a href="#sobre-mi" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Sobre Mí</a>
-            </li>
-            <li>
-                <a href="#especializacion" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Especialización</a>
-            </li>
-            <li>
-                <a href="#tecnologias" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Tecnologías</a>
-            </li>
-            <li>
-                <a href="#proyectos" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Proyectos</a>
-            </li>
-            <li>
-                <a href="#contacto" class="nav-link px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Contacto</a>
-            </li>
+        <!-- Enlaces de navegación -->
+        <div class="hidden md:flex items-center space-x-2">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <ul class="flex space-x-1 text-lg relative">
+                    <li>
+                        <a href="#sobre-mi" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-300 font-medium flex items-center">
+                            <i class="fas fa-user mr-2 text-sm"></i> Sobre Mí
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#especializacion" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-300 font-medium flex items-center">
+                            <i class="fas fa-cogs mr-2 text-sm"></i> Especialización
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tecnologias" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-300 font-medium flex items-center">
+                            <i class="fas fa-laptop-code mr-2 text-sm"></i> Tecnologías
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#proyectos" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-300 font-medium flex items-center">
+                            <i class="fas fa-project-diagram mr-2 text-sm"></i> Proyectos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contacto" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-300 font-medium flex items-center">
+                            <i class="fas fa-envelope mr-2 text-sm"></i> Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-            <!-- Enlaces de Contacto -->
-            <li class="flex items-center space-x-4">
-                <!-- WhatsApp -->
-                <a href="https://wa.me/56930883662" target="_blank" class="hover:text-green-500 transition-all">
-                    <i class="fab fa-whatsapp text-2xl"></i>
+            <!-- Botones de contacto -->
+            <div class="flex items-center space-x-3 ml-4">
+                <a href="https://wa.me/56930883662" target="_blank" class="w-10 h-10 bg-green-600/20 hover:bg-green-600/40 rounded-full flex items-center justify-center border border-green-500/30 hover:border-green-500/50 transition-all group">
+                    <i class="fab fa-whatsapp text-green-400 group-hover:text-green-300"></i>
                 </a>
-                <!-- Correo Electrónico -->
-                <a href="mailto:sebastianurizar05@gmail.com" class="hover:text-red-500 transition-all">
-                    <i class="fas fa-envelope text-2xl"></i>
+                <a href="mailto:sebastianurizar05@gmail.com" class="w-10 h-10 bg-red-600/20 hover:bg-red-600/40 rounded-full flex items-center justify-center border border-red-500/30 hover:border-red-500/50 transition-all group">
+                    <i class="fas fa-envelope text-red-400 group-hover:text-red-300"></i>
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 backdrop-blur-lg w-full absolute left-0 px-4 pb-4">
+        <div class="flex flex-col space-y-2 pt-2">
+            <a href="#sobre-mi" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
+                <i class="fas fa-user mr-3"></i> Sobre Mí
+            </a>
+            <a href="#especializacion" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
+                <i class="fas fa-cogs mr-3"></i> Especialización
+            </a>
+            <a href="#tecnologias" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
+                <i class="fas fa-laptop-code mr-3"></i> Tecnologías
+            </a>
+            <a href="#proyectos" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
+                <i class="fas fa-project-diagram mr-3"></i> Proyectos
+            </a>
+            <a href="#contacto" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
+                <i class="fas fa-envelope mr-3"></i> Contacto
+            </a>
+            <div class="flex justify-center space-x-4 pt-2">
+                <a href="https://wa.me/56930883662" target="_blank" class="w-12 h-12 bg-green-600/30 hover:bg-green-600/40 rounded-full flex items-center justify-center border border-green-500/30 hover:border-green-500/50 transition-all">
+                    <i class="fab fa-whatsapp text-green-400 text-xl"></i>
+                </a>
+                <a href="mailto:sebastianurizar05@gmail.com" class="w-12 h-12 bg-red-600/30 hover:bg-red-600/40 rounded-full flex items-center justify-center border border-red-500/30 hover:border-red-500/50 transition-all">
+                    <i class="fas fa-envelope text-red-400 text-xl"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
 
-<!-- Agregar iconos de Font Awesome (solo una vez) -->
+<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-    window.addEventListener('scroll', function () {
-        var navbar = document.getElementById("navbar");
-        var inicioSection = document.getElementById("inicio");
-
-        // Verifica si estás en la sección de "inicio"
-        var inicioPosition = inicioSection.offsetTop;
-        var currentScrollPosition = window.scrollY;
-
-        if (currentScrollPosition > inicioPosition + 50) {
-            navbar.classList.add("bg-purple-700/90", "shadow-lg"); // Morado más oscuro con transparencia
-            navbar.classList.remove("bg-transparent");
+    // Efecto al hacer scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById("navbar");
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 50) {
+            navbar.classList.add("bg-gray-900/95", "shadow-xl", "border-white/10");
+            navbar.classList.remove("bg-transparent", "border-transparent");
         } else {
-            navbar.classList.add("bg-transparent");
-            navbar.classList.remove("bg-purple-700/90", "shadow-lg");
+            navbar.classList.add("bg-transparent", "border-transparent");
+            navbar.classList.remove("bg-gray-900/95", "shadow-xl", "border-white/10");
         }
     });
 
-    // Resaltar el enlace activo al hacer scroll
+    // Resaltar enlace activo
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
+    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -75,11 +127,39 @@
             }
         });
 
+        // Para enlaces de escritorio
         navLinks.forEach(link => {
-            link.classList.remove('bg-purple-800', 'text-white', 'border', 'border-white/20', 'font-bold');
+            link.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-blue-500', 'text-white', 'shadow-md');
             if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('bg-purple-800', 'text-white', 'border', 'border-white/20', 'font-bold');
+                link.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-blue-500', 'text-white', 'shadow-md');
             }
+        });
+
+        // Para enlaces móviles
+        mobileLinks.forEach(link => {
+            link.classList.remove('bg-white/20', 'text-white');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('bg-white/20', 'text-white');
+            }
+        });
+    });
+
+    // Menú móvil
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ? 
+            '<i class="fas fa-bars text-2xl"></i>' : 
+            '<i class="fas fa-times text-2xl"></i>';
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
         });
     });
 </script>
