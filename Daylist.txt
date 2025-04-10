@@ -1,0 +1,3 @@
+-Mejorar el frontend y la distribucion del contenido de las secciones y que sea mas dinamico.
+-Agregar funcionalidad de que el formulario me mande un correo a mi en la seccion de contacto.
+-Agregar otra foto mas bonita de perfil.
