@@ -1,0 +1,22 @@
+/* Estilos base para móviles */
+@media (max-width: 640px) {
+    html {
+        font-size: 14px;
+    }
+    
+    body {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Mejoras de accesibilidad en móviles */
+button, a {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Animación suave para el menú móvil */
+#mobile-menu.show {
+    transform: translateY(0);
+}

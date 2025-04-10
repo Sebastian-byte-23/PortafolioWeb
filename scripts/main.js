@@ -1,6 +1,18 @@
-// Cargar Tailwind dinámicamente
+// Cargar Tailwind dinámicamente con configuración responsiva
 let tailwindScript = document.createElement("script");
 tailwindScript.src = "https://cdn.tailwindcss.com";
+tailwindScript.onload = function() {
+    tailwind.config = {
+        theme: {
+            extend: {
+                screens: {
+                    'xs': '475px',
+                    '3xl': '1920px',
+                }
+            }
+        }
+    }
+};
 document.head.appendChild(tailwindScript);
 
 // Función para cargar archivos HTML dentro de los divs
