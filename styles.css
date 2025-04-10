@@ -20,11 +20,12 @@ button, a {
 #mobile-menu {
     top: 100%;
     z-index: 1000;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
 }
 
-#mobile-menu:not(.hidden) {
+#mobile-menu.show {
     transform: translateY(0);
-    display: block;
 }
 
 .nav-link-mobile {
