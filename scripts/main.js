@@ -11,10 +11,10 @@ async function includeHTML(id, file) {
 }
 
 // Cargar las secciones
-includeHTML("navbar", "sections/navbar.html");
-includeHTML("inicio", "sections/inicio.html");
-includeHTML("sobre-mi", "sections/sobre-mi.html");
-includeHTML("tecnologias", "sections/tecnologias.html");
-includeHTML("especializacion", "sections/especializacion.html");
-includeHTML("proyectos", "sections/proyectos.html");
-includeHTML("contacto", "sections/contacto.html");
+includeHTML("navbar", "/sections/navbar.html");
+includeHTML("inicio", "/sections/inicio.html");
+includeHTML("sobre-mi", "/sections/sobre-mi.html");
+includeHTML("tecnologias", "/sections/tecnologias.html");
+includeHTML("especializacion", "/sections/especializacion.html");
+includeHTML("proyectos", "/sections/proyectos.html");
+includeHTML("contacto", "/sections/contacto.html");
