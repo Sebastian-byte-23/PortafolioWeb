@@ -144,22 +144,47 @@
         });
     });
 
-    // Menú móvil
+    // Menú móvil mejorado
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
     mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ? 
-            '<i class="fas fa-bars text-2xl"></i>' : 
-            '<i class="fas fa-times text-2xl"></i>';
+        // Alternar visibilidad con animación
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('show');
+            mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('show');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
     });
 
-    // Cerrar menú al hacer clic en un enlace
+    // Cerrar menú al hacer clic en un enlace o fuera del menú
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('show');
             mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = 'auto';
         });
+    });
+
+    // Cerrar al hacer clic fuera del menú
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('show');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = 'auto';
+        }
     });
 </script>

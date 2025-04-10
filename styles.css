@@ -16,7 +16,25 @@ button, a {
     min-height: 44px;
 }
 
-/* Animación suave para el menú móvil */
-#mobile-menu.show {
+/* Animación y estilos para el menú móvil */
+#mobile-menu {
+    top: 100%;
+    z-index: 1000;
+}
+
+#mobile-menu:not(.hidden) {
     transform: translateY(0);
+    display: block;
+}
+
+.nav-link-mobile {
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    #mobile-menu {
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+    }
 }
