@@ -97,13 +97,59 @@
             </div>
         </div>
 
+        <!-- Sección de proyectos adicionales (oculta inicialmente) -->
+        <div id="more-projects" class="hidden grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 transition-all duration-500 ease-in-out">
+            <!-- Aquí puedes agregar más proyectos con la misma estructura -->
+            <!-- Ejemplo de proyecto adicional -->
+            <div class="group relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <div class="relative h-full bg-white p-6 rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+                    <div class="overflow-hidden rounded-xl mb-6">
+                        <img src="assets/project-placeholder.jpg" 
+                             class="w-full h-56 object-cover rounded-xl transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-code text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">Nuevo Proyecto</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Descripción breve del proyecto y sus características principales.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Tecnología</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-purple-600 font-medium hover:text-purple-800 transition-colors">
+                        Ver en GitHub
+                        <i class="fas fa-external-link-alt ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fin de proyecto adicional -->
+        </div>
+
         <!-- Botón para ver más proyectos -->
         <div class="text-center mt-16">
-            <a href="#" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+            <button id="show-more-btn" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                 Ver todos los proyectos
-                <i class="fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i>
-            </a>
+                <i class="fas fa-arrow-down ml-3 transition-transform group-hover:translate-y-1"></i>
+            </button>
         </div>
+
+        <!-- Script para mostrar/ocultar proyectos -->
+        <script>
+            document.getElementById('show-more-btn').addEventListener('click', function() {
+                const moreProjects = document.getElementById('more-projects');
+                const icon = this.querySelector('i');
+                
+                moreProjects.classList.toggle('hidden');
+                
+                if (moreProjects.classList.contains('hidden')) {
+                    this.innerHTML = 'Ver todos los proyectos <i class="fas fa-arrow-down ml-3 transition-transform group-hover:translate-y-1"></i>';
+                } else {
+                    this.innerHTML = 'Mostrar menos <i class="fas fa-arrow-up ml-3 transition-transform group-hover:translate-y-1"></i>';
+                }
+            });
+        </script>
     </div>
 </section>
 
