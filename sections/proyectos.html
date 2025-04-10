@@ -129,7 +129,7 @@
 
         <!-- Botón para ver más proyectos -->
         <div class="text-center mt-16">
-            <button id="show-more-btn" type="button" onclick="toggleProjects()" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+            <button id="show-more-btn" type="button" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                 Ver todos los proyectos
                 <i class="fas fa-arrow-down ml-3 transition-transform group-hover:translate-y-1"></i>
             </button>
@@ -137,7 +137,8 @@
 
         <!-- Script para mostrar/ocultar proyectos -->
         <script>
-            function toggleProjects() {
+            // Definir la función primero
+            const toggleProjects = () => {
                 const moreProjects = document.getElementById('more-projects');
                 const showMoreBtn = document.getElementById('show-more-btn');
                 
@@ -154,7 +155,7 @@
                 } else {
                     showMoreBtn.innerHTML = 'Ver todos los proyectos <i class="fas fa-arrow-down ml-3"></i>';
                 }
-            }
+            };
 
             // Asegurar que Font Awesome esté cargado
             if (!document.querySelector('script[src*="fontawesome"]')) {
