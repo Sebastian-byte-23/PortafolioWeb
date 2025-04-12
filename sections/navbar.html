@@ -79,7 +79,7 @@
 
     <!-- Menú lateral móvil -->
     <div id="mobile-menu"
-        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-64 h-full fixed top-0 -left-64 px-4 py-4 transition-all duration-300 ease-in-out z-50">
+        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-64 h-full fixed top-0 -left-64 px-4 py-4 transition-all duration-300 ease-in-out z-50 hidden">
         <div class="flex flex-col space-y-2 pt-2">
             <a href="#sobre-mi"
                 class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
@@ -167,47 +167,49 @@
     // Funcionalidad menú móvil
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
 
-    mobileMenuButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const overlay = document.getElementById('mobile-overlay');
+    function toggleMobileMenu() {
         const isOpen = mobileMenu.classList.contains('left-0');
-
-        if (isOpen) {
-            mobileMenu.classList.remove('left-0');
-            mobileMenu.classList.add('-left-64');
-            overlay.classList.add('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-        } else {
+        
+        if (!isOpen) {
+            // Abrir menú
             mobileMenu.classList.remove('-left-64');
             mobileMenu.classList.add('left-0');
             overlay.classList.remove('hidden');
             mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Cerrar menú
+            mobileMenu.classList.remove('left-0');
+            mobileMenu.classList.add('-left-64');
+            overlay.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            document.body.style.overflow = 'auto';
         }
-
+        
         mobileMenuButton.setAttribute('aria-expanded', !isOpen);
-        document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+    }
+
+    mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
     });
 
     // Cerrar menú al hacer clic en el overlay
-    document.getElementById('mobile-overlay').addEventListener('click', () => {
-        mobileMenu.classList.remove('left-0');
-        mobileMenu.classList.add('-left-64');
-        document.getElementById('mobile-overlay').classList.add('hidden');
-        mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = 'auto';
-    });
+    overlay.addEventListener('click', toggleMobileMenu);
 
     // Cerrar menú al hacer clic en cualquier enlace móvil
     mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('left-0');
-            mobileMenu.classList.add('-left-64');
-            document.getElementById('mobile-overlay').classList.add('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = 'auto';
-        });
+        link.addEventListener('click', toggleMobileMenu);
+    });
+
+    // Cerrar menú al cambiar tamaño de pantalla
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) { // md breakpoint
+            if (mobileMenu.classList.contains('left-0')) {
+                toggleMobileMenu();
+            }
+        }
     });
 </script>
