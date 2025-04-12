@@ -63,7 +63,7 @@
     </div>
 
     <!-- Menú móvil desplegable mejorado -->
-    <div id="mobile-menu" class="md:hidden bg-gray-900/95 backdrop-blur-lg w-full absolute left-0 px-4 pb-4">
+    <div id="mobile-menu" class="md:hidden bg-gray-900/95 backdrop-blur-lg w-full absolute left-0 px-4 pb-4 hidden transform -translate-y-full transition-all duration-300">
         <div class="flex flex-col space-y-2 pt-2">
             <a href="#sobre-mi" class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
                 <i class="fas fa-user mr-3"></i> Sobre Mí
@@ -151,8 +151,10 @@
     mobileMenuButton.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevenir que el evento llegue al document.click
         // Alternar visibilidad con animación
-        mobileMenu.classList.toggle('show');
-        const isOpen = mobileMenu.classList.contains('show');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('translate-y-0');
+        mobileMenu.classList.toggle('-translate-y-full');
+        const isOpen = !mobileMenu.classList.contains('hidden');
         
         mobileMenuButton.innerHTML = isOpen 
             ? '<i class="fas fa-times text-2xl"></i>' 
@@ -165,7 +167,9 @@
     // Cerrar menú al hacer clic en un enlace
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.remove('show');
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('translate-y-0');
+            mobileMenu.classList.add('-translate-y-full');
             mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = 'auto';
