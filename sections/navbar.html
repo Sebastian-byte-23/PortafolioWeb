@@ -128,26 +128,26 @@
         overlay.classList.add('hidden');
 
         mobileMenuButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const isOpen = mobileMenu.classList.contains('translate-x-0');
-
-        if (isOpen) {
-            mobileMenu.classList.remove('translate-x-0');
-            mobileMenu.classList.add('translate-x-full');
-            overlay.classList.add('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-            document.body.style.overflow = 'auto';
-        } else {
-            mobileMenu.classList.remove('translate-x-full');
-            mobileMenu.classList.add('translate-x-0');
-            overlay.classList.remove('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
-            document.body.style.overflow = 'hidden';
-        }
-
-        mobileMenuButton.setAttribute('aria-expanded', !isOpen);
-    });
+            e.stopPropagation();
+            
+            const isOpen = mobileMenu.classList.contains('translate-x-0');
+            
+            if (isOpen) {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+        });
 
     overlay.addEventListener('click', () => {
         mobileMenu.classList.remove('translate-x-0');
