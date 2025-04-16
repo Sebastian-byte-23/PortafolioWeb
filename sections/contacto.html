@@ -101,7 +101,12 @@
                             return;
                         }
 
-                        emailjs.sendForm('service_yi2dbrp', 'template_a0qtsle', form)
+                        // Verificar primero la conexión con EmailJS
+                        emailjs.send('service_yi2dbrp', 'template_a0qtsle', {
+                            from_name: form.name.value,
+                            from_email: form.email.value,
+                            message: form.message.value
+                        })
                             .then(function (response) {
                                 console.log('Respuesta de EmailJS:', response);
                                 console.log('Status:', response.status);
@@ -142,14 +147,13 @@
                     });
                 </script>
 
-                <!-- Cargar EmailJS desde CDN -->
-                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                <!-- Cargar EmailJS desde CDN con versión estable -->
+                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.7.0/dist/email.min.js"></script>
                 <script>
-                    // Inicialización redundante para asegurar que funcione
-                    (function () {
-                        if (typeof emailjs !== 'undefined') {
-                            emailjs.init('4oHfMsFv59ttu2bJn');
-                        }
+                    // Inicialización con verificación de estado
+                    (function() {
+                        emailjs.init('4oHfMsFv59ttu2bJn');
+                        console.log('EmailJS initialized with service:', emailjs.getServiceStatus());
                     })();
                 </script>
 
