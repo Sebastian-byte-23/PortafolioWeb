@@ -92,8 +92,9 @@
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin ml-2"></i>';
 
-                        // Verificar que EmailJS esté cargado
-                        if (typeof emailjs === 'undefined') {
+                        // Validación mejorada
+                        if (typeof emailjs === 'undefined' || !emailjs.init) {
+                            console.error('EmailJS no está cargado:', typeof emailjs);
                             console.error('EmailJS no está cargado correctamente');
                             alert('Error: El servicio de email no está disponible. Por favor recarga la página.');
                             submitBtn.disabled = false;
@@ -102,7 +103,8 @@
                         }
 
                         // Verificar primero la conexión con EmailJS
-                        emailjs.send('service_9f6i9yr', 'template_a0qtsle', {
+                        // Usar sendForm en lugar de send para manejar mejor el formulario
+                        emailjs.sendForm('service_9f6i9yr', 'template_a0qtsle', form)
                             from_name: form.name.value,
                             from_email: form.email.value,
                             message: form.message.value
@@ -150,10 +152,24 @@
                 <!-- Cargar EmailJS desde CDN con versión estable -->
                 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.7.0/dist/email.min.js"></script>
                 <script>
-                    // Inicialización con verificación de estado
+                    // Inicialización mejorada con verificación
                     (function() {
-                        emailjs.init('y9Igh3TPptu7H-zVh');
-                        console.log('EmailJS initialized with service:', emailjs.getServiceStatus());
+                        try {
+                            emailjs.init('y9Igh3TPptu7H-zVh');
+                            console.log('EmailJS initialized:', emailjs);
+                            
+                            // Verificar conexión con el servicio
+                            emailjs.send('service_9f6i9yr', 'template_a0qtsle', {
+                                from_name: 'Test',
+                                from_email: 'test@example.com',
+                                message: 'This is a test'
+                            }).then(
+                                () => console.log('Test email sent successfully'),
+                                (err) => console.error('Test email failed:', err)
+                            );
+                        } catch (error) {
+                            console.error('EmailJS initialization error:', error);
+                        }
                     })();
                 </script>
 
