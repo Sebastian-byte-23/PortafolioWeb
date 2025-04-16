@@ -1,4 +1,5 @@
 // Cargar Tailwind dinámicamente con configuración responsiva
+// Usamos async para no bloquear el renderizado
 let tailwindScript = document.createElement("script");
 tailwindScript.src = "https://cdn.tailwindcss.com";
 tailwindScript.onload = function() {
