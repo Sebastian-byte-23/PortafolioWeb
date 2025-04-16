@@ -61,144 +61,73 @@
 
         </div>
 
-        <!-- Menú móvil mejorado -->
+
+        <!-- Botón toggle (solo visible en móvil) -->
         <div class="md:hidden flex items-center">
-            <button id="mobile-menu-button" class="text-white focus:outline-none p-2" aria-label="Menú">
-                <i class="fas fa-bars text-2xl"></i>
+            <button id="mobile-menu-button" class="text-white focus:outline-none p-2" aria-label="Menú"
+                aria-expanded="false">
+                <i id="mobile-menu-icon" class="fas fa-bars text-2xl"></i>
             </button>
+
+
         </div>
-    </div>
 
-    <!-- Overlay para el menú lateral -->
-    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
-
-    <style>
-        #mobile-menu {
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-        }
-    
-        #mobile-menu.translate-x-0 {
-            transform: translateX(0) !important;
-            opacity: 1;
-        }
-    
-        #mobile-menu.translate-x-full {
-            transform: translateX(100%) !important;
-            opacity: 0.8;
-        }
-    
-        .nav-link-mobile {
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-    
-        .nav-link-mobile:hover {
-            border-left: 3px solid #8b5cf6;
-            transform: translateX(5px);
-        }
-    
-        #mobile-overlay {
-            transition: opacity 0.3s ease;
-        }
-    </style>
-
-    <!-- Menú lateral móvil -->
-    <div id="mobile-menu"
-        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-72 h-screen fixed top-0 right-0 transform translate-x-full px-6 py-8 transition-all duration-300 ease-in-out z-50 overflow-hidden">
-
-        <div class="flex flex-col space-y-4 h-full justify-between">
-            <a href="#sobre-mi"
-                class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
-                <i class="fas fa-user mr-3"></i> Sobre Mí
-            </a>
-            <a href="#especializacion"
-                class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
-                <i class="fas fa-cogs mr-3"></i> Especialización
-            </a>
-            <a href="#tecnologias"
-                class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
-                <i class="fas fa-laptop-code mr-3"></i> Tecnologías
-            </a>
-            <a href="#proyectos"
-                class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
-                <i class="fas fa-project-diagram mr-3"></i> Proyectos
-            </a>
-            <a href="#contacto"
-                class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
-                <i class="fas fa-envelope mr-3"></i> Contacto
-            </a>
-            <div class="mt-auto">
-                <div class="flex justify-center space-x-6 py-4">
-                    <a href="https://wa.me/56930883662" target="_blank"
-                        class="w-12 h-12 bg-green-600/30 hover:bg-green-600/40 rounded-full flex items-center justify-center border border-green-500/30 hover:border-green-500/50 transition-all">
-                        <i class="fab fa-whatsapp text-green-400 text-xl"></i>
-                    </a>
-                    <a href="mailto:sebastianurizar05@gmail.com"
-                        class="w-12 h-12 bg-red-600/30 hover:bg-red-600/40 rounded-full flex items-center justify-center border border-red-500/30 hover:border-red-500/50 transition-all">
-                        <i class="fas fa-envelope text-red-400 text-xl"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Menú lateral móvil -->
+        <div id="mobile-menu"
+            class="md:hidden bg-gray-900 w-64 h-screen fixed top-0 right-0 transform translate-x-full transition-transform duration-300 z-50">
+            <ul class="flex flex-col p-4 space-y-4 text-white">
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#especializacion">Especialización</a></li>
+                <li><a href="#tecnologias">Tecnologías</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-    </div>
+
+
 </nav>
+<!-- Forzar Tailwind a compilar translate-x-0 -->
+<div class="hidden translate-x-0 translate-x-full"></div>
 
+<script src="https://cdn.tailwindcss.com"></script>
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('mobile-overlay');
-        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+    document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const menuLinks = menu.querySelectorAll('a'); // todos los enlaces dentro del menú
 
-        // Asegurarse que el menú está cerrado al cargar
-        mobileMenu.classList.add('translate-x-full');
-        overlay.classList.add('hidden');
+        function toggleMenu(forceClose = false) {
+            const isOpen = menu.classList.contains('translate-x-0');
+            const shouldClose = forceClose || isOpen;
 
-        function toggleMenu() {
-            const isOpen = mobileMenu.classList.contains('translate-x-0');
-            
-            if (isOpen) {
-                mobileMenu.classList.remove('translate-x-0');
-                mobileMenu.classList.add('translate-x-full');
-                overlay.classList.add('hidden');
-                mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-                document.body.style.overflow = 'auto';
+            if (shouldClose) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                btn.setAttribute('aria-expanded', 'false');
             } else {
-                mobileMenu.classList.remove('translate-x-full');
-                mobileMenu.classList.add('translate-x-0');
-                overlay.classList.remove('hidden');
-                mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
-                document.body.style.overflow = 'hidden';
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                btn.setAttribute('aria-expanded', 'true');
             }
-            
-            mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
         }
 
-        mobileMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
+        btn.addEventListener('click', function () {
             toggleMenu();
         });
 
-        overlay.addEventListener('click', () => {
-            toggleMenu();
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMenu();
+        // Cierra el menú cuando se hace clic en un enlace
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                toggleMenu(true);
             });
-        });
-
-        // Verificar si el menú está abierto al hacer clic en cualquier parte
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && 
-                !mobileMenuButton.contains(e.target) && 
-                mobileMenu.classList.contains('translate-x-0')) {
-                toggleMenu();
-            }
         });
     });
 </script>

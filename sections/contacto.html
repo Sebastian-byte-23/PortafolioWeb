@@ -85,53 +85,22 @@
                 <script>
                     function sendEmail(event) {
                         event.preventDefault();
-                        console.log('Iniciando envío de formulario...');
-
                         const form = document.getElementById('contactForm');
                         const submitBtn = form.querySelector('button[type="submit"]');
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin ml-2"></i>';
 
-                        // Validación mejorada
-                        if (typeof emailjs === 'undefined' || !emailjs.init) {
-                            console.error('EmailJS no está cargado:', typeof emailjs);
-                            console.error('EmailJS no está cargado correctamente');
-                            alert('Error: El servicio de email no está disponible. Por favor recarga la página.');
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
-                            return;
-                        }
-
-                        // Verificar primero la conexión con EmailJS
-                        // Usar sendForm en lugar de send para manejar mejor el formulario
                         emailjs.sendForm('service_9f6i9yr', 'template_a0qtsle', form)
-                            from_name: form.name.value,
-                            from_email: form.email.value,
-                            message: form.message.value
-                        })
                             .then(function (response) {
-                                console.log('Respuesta de EmailJS:', response);
-                                console.log('Status:', response.status);
-                                console.log('Text:', response.text);
-
-                                // Mostrar notificación de éxito
-                                alert('¡Mensaje enviado correctamente! Revisa tu correo electrónico.');
-
-                                // Resetear formulario
+                                alert('¡Mensaje enviado correctamente!');
                                 form.reset();
                                 submitBtn.innerHTML = 'Mensaje Enviado <i class="fas fa-check ml-2"></i>';
-
-                                // Restaurar botón después de 3 segundos
                                 setTimeout(() => {
                                     submitBtn.disabled = false;
                                     submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
                                 }, 3000);
                             }, function (error) {
-                                console.error('Error al enviar:', error);
-                                console.log('Error status:', error.status);
-                                console.log('Error text:', error.text);
-
-                                alert(`Error al enviar el mensaje: ${error.text || 'Por favor inténtalo nuevamente.'}`);
+                                alert('Error al enviar el mensaje: ' + (error.text || 'Por favor inténtalo nuevamente.'));
                                 submitBtn.disabled = false;
                                 submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
                             });
@@ -153,11 +122,11 @@
                 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.7.0/dist/email.min.js"></script>
                 <script>
                     // Inicialización mejorada con verificación
-                    (function() {
+                    (function () {
                         try {
                             emailjs.init('y9Igh3TPptu7H-zVh');
                             console.log('EmailJS initialized:', emailjs);
-                            
+
                             // Verificar conexión con el servicio
                             emailjs.send('service_9f6i9yr', 'template_a0qtsle', {
                                 from_name: 'Test',
@@ -193,37 +162,5 @@
 
         </div>
 
-        <!-- Botón de volver arriba -->
-        <button id="backToTop"
-            class="fixed bottom-8 right-8 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 hover:scale-110 transition-all duration-300 opacity-0 invisible transform translate-y-4 z-50"
-            aria-label="Volver arriba">
-            <i class="fas fa-arrow-up text-xl"></i>
-        </button>
+
 </section>
-
-
-
-<script>
-    // Mostrar/ocultar botón al hacer scroll
-    document.addEventListener('DOMContentLoaded', function () {
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) {
-                backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-                backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
-            } else {
-                backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
-                backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
-            }
-        });
-
-        // Función para volver arriba
-        backToTop.addEventListener('click', function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>

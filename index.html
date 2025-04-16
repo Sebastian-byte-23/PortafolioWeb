@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mi Portafolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="text-white overflow-y-auto">
-    
+
     <!-- Secciones dinámicas -->
     <div id="navbar"></div>
     <div id="inicio"></div>
@@ -19,14 +21,70 @@
     <div id="especializacion"></div> <!-- Nueva Sección -->
     <div id="contacto"></div>
 
+    
     <!-- Preconnect para mejorar performance -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://kit.fontawesome.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- Botón de volver arriba -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 hover:scale-110 transition-all duration-300 z-50"
+        aria-label="Volver arriba">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+    <style>
+        @keyframes simpleFade {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        .animate-simpleFade {
+            animation: simpleFade 0.3s ease;
+        }
+    </style>
+
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+
+        // Scroll lento personalizado
+        function scrollToTopSlowly(duration = 1500) {
+            const start = window.scrollY;
+            const startTime = performance.now();
+
+            function scrollStep(timestamp) {
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1); // entre 0 y 1
+
+                // Easing suave
+                const ease = 1 - Math.pow(1 - progress, 4);
+
+                window.scrollTo(0, start * (1 - ease));
+
+                if (progress < 1) {
+                    requestAnimationFrame(scrollStep);
+                }
+            }
+
+            requestAnimationFrame(scrollStep);
+        }
+
+        backToTop.addEventListener('click', function () {
+            scrollToTopSlowly(1800); // scroll lento en 1.8 segundos
+        });
+    </script>
+
 </body>
 <!-- Todos los scripts al final -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" defer></script>
 <script src="./scripts/main.js" defer></script>
+
 </html>
