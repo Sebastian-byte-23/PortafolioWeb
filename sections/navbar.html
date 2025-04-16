@@ -79,9 +79,9 @@
 
     <!-- Menú lateral móvil -->
     <div id="mobile-menu"
-        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-64 h-full fixed top-0 left-0 transform -translate-x-full px-4 py-4 transition-transform duration-300 ease-in-out z-50">
+        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-80 h-full fixed top-0 right-0 transform translate-x-full px-6 py-8 transition-transform duration-300 ease-in-out z-50">
 
-        <div class="flex flex-col space-y-2 pt-2">
+        <div class="flex flex-col space-y-4 pt-4">
             <a href="#sobre-mi"
                 class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
                 <i class="fas fa-user mr-3"></i> Sobre Mí
@@ -120,24 +120,29 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-overlay');
-    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
 
-    mobileMenuButton.addEventListener('click', (e) => {
+        // Asegurarse que el menú está cerrado al cargar
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+
+        mobileMenuButton.addEventListener('click', (e) => {
         e.stopPropagation();
 
         const isOpen = mobileMenu.classList.contains('translate-x-0');
 
         if (isOpen) {
             mobileMenu.classList.remove('translate-x-0');
-            mobileMenu.classList.add('-translate-x-full');
+            mobileMenu.classList.add('translate-x-full');
             overlay.classList.add('hidden');
             mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
             document.body.style.overflow = 'auto';
         } else {
-            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.remove('translate-x-full');
             mobileMenu.classList.add('translate-x-0');
             overlay.classList.remove('hidden');
             mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
@@ -149,7 +154,7 @@
 
     overlay.addEventListener('click', () => {
         mobileMenu.classList.remove('translate-x-0');
-        mobileMenu.classList.add('-translate-x-full');
+        mobileMenu.classList.add('translate-x-full');
         overlay.classList.add('hidden');
         mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
         mobileMenuButton.setAttribute('aria-expanded', 'false');
@@ -159,11 +164,12 @@
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('translate-x-0');
-            mobileMenu.classList.add('-translate-x-full');
+            mobileMenu.classList.add('translate-x-full');
             overlay.classList.add('hidden');
             mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = 'auto';
         });
+    });
     });
 </script>
