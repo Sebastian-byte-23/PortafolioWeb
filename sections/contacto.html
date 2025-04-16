@@ -81,23 +81,30 @@
                     event.preventDefault();
 
                     var form = document.getElementById('contactForm');
-                    var formData = new FormData(form);
+                    
+                    // Resetear el formulario después de enviar
+                    function resetForm() {
+                        form.reset();
+                        setTimeout(() => {
+                            document.getElementById('contactForm').querySelector('button[type="submit"]').disabled = false;
+                        }, 3000);
+                    }
 
-                    emailjs.sendForm('service_yi2dbrp', 'template_021zkl9', formData)
-                        .then(function (response) {
-                            console.log('Correo enviado:', response);
+                    emailjs.sendForm('service_yi2dbrp', 'template_021zkl9', form)
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
                             alert('¡Mensaje enviado correctamente!');
-                        }, function (error) {
-                            console.log('Error:', error);
-                            alert('Hubo un problema al enviar el mensaje.');
+                            resetForm();
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                            alert('Hubo un problema al enviar el mensaje. Por favor inténtalo nuevamente.');
                         });
                 }
             </script>
 
-
             <script type="text/javascript">
-                (function () {
-                    emailjs.init("sebastianurizar05@gmail.com");
+                (function() {
+                    emailjs.init('YOUR_USER_ID'); // Reemplaza con tu User ID de EmailJS
                 })();
             </script>
 
