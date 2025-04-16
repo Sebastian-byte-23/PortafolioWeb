@@ -79,32 +79,71 @@
             <script>
                 function sendEmail(event) {
                     event.preventDefault();
+                    console.log('Iniciando envío de formulario...');
 
-                    var form = document.getElementById('contactForm');
-                    
-                    // Resetear el formulario después de enviar
-                    function resetForm() {
-                        form.reset();
-                        setTimeout(() => {
-                            document.getElementById('contactForm').querySelector('button[type="submit"]').disabled = false;
-                        }, 3000);
+                    const form = document.getElementById('contactForm');
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin ml-2"></i>';
+
+                    // Verificar que EmailJS esté cargado
+                    if (typeof emailjs === 'undefined') {
+                        console.error('EmailJS no está cargado correctamente');
+                        alert('Error: El servicio de email no está disponible. Por favor recarga la página.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
+                        return;
                     }
 
                     emailjs.sendForm('service_yi2dbrp', 'template_021zkl9', form)
                         .then(function(response) {
-                            console.log('SUCCESS!', response.status, response.text);
-                            alert('¡Mensaje enviado correctamente!');
-                            resetForm();
+                            console.log('Respuesta de EmailJS:', response);
+                            console.log('Status:', response.status);
+                            console.log('Text:', response.text);
+                            
+                            // Mostrar notificación de éxito
+                            alert('¡Mensaje enviado correctamente! Revisa tu correo electrónico.');
+                            
+                            // Resetear formulario
+                            form.reset();
+                            submitBtn.innerHTML = 'Mensaje Enviado <i class="fas fa-check ml-2"></i>';
+                            
+                            // Restaurar botón después de 3 segundos
+                            setTimeout(() => {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
+                            }, 3000);
                         }, function(error) {
-                            console.log('FAILED...', error);
-                            alert('Hubo un problema al enviar el mensaje. Por favor inténtalo nuevamente.');
+                            console.error('Error al enviar:', error);
+                            console.log('Error status:', error.status);
+                            console.log('Error text:', error.text);
+                            
+                            alert(`Error al enviar el mensaje: ${error.text || 'Por favor inténtalo nuevamente.'}`);
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>';
                         });
                 }
+
+                // Verificar carga de EmailJS
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (typeof emailjs === 'undefined') {
+                        console.error('EmailJS no se ha cargado correctamente');
+                    } else {
+                        console.log('EmailJS cargado correctamente');
+                        emailjs.init('4oHfMsFv59ttu2bJn');
+                        console.log('EmailJS inicializado con user ID:', '4oHfMsFv59ttu2bJn');
+                    }
+                });
             </script>
 
-            <script type="text/javascript">
+            <!-- Cargar EmailJS desde CDN -->
+            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+            <script>
+                // Inicialización redundante para asegurar que funcione
                 (function() {
-                    emailjs.init('4oHfMsFv59ttu2bJn'); // Reemplaza con tu User ID de EmailJS
+                    if (typeof emailjs !== 'undefined') {
+                        emailjs.init('4oHfMsFv59ttu2bJn');
+                    }
                 })();
             </script>
 
@@ -129,10 +168,7 @@
         </div>
 </section>
 
-<!-- Botón de volver arriba -->
-<button id="backToTop" class="fixed bottom-8 right-8 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 hover:scale-110 transition-all duration-300 opacity-0 invisible transform translate-y-4 z-50" aria-label="Volver arriba">
-    <i class="fas fa-arrow-up text-xl"></i>
-</button>
+
 
 <script>
     // Mostrar/ocultar botón al hacer scroll
