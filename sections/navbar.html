@@ -79,7 +79,8 @@
 
     <!-- Menú lateral móvil -->
     <div id="mobile-menu"
-        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-64 h-full fixed top-0 -left-64 px-4 py-4 transition-all duration-300 ease-in-out z-50 hidden">
+        class="md:hidden bg-gray-900/95 backdrop-blur-lg w-64 h-full fixed top-0 left-0 transform -translate-x-full px-4 py-4 transition-transform duration-300 ease-in-out z-50">
+
         <div class="flex flex-col space-y-2 pt-2">
             <a href="#sobre-mi"
                 class="nav-link-mobile px-4 py-3 rounded-lg hover:bg-white/10 transition-all font-medium flex items-center">
@@ -119,97 +120,50 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-    // Cambiar fondo de navbar al hacer scroll
-    window.addEventListener('scroll', function () {
-        const navbar = document.getElementById("navbar");
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition > 50) {
-            navbar.classList.add("bg-gray-900/95", "shadow-xl", "border-white/10");
-            navbar.classList.remove("bg-transparent", "border-transparent");
-        } else {
-            navbar.classList.add("bg-transparent", "border-transparent");
-            navbar.classList.remove("bg-gray-900/95", "shadow-xl", "border-white/10");
-        }
-    });
-
-    // Resaltar enlaces activos
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= (sectionTop - 300)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        // Escritorio
-        navLinks.forEach(link => {
-            link.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-blue-500', 'text-white', 'shadow-md');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-blue-500', 'text-white', 'shadow-md');
-            }
-        });
-
-        // Móvil
-        mobileLinks.forEach(link => {
-            link.classList.remove('bg-white/20', 'text-white');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('bg-white/20', 'text-white');
-            }
-        });
-    });
-
-    // Funcionalidad menú móvil
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-overlay');
-
-    function toggleMobileMenu() {
-        const isOpen = mobileMenu.classList.contains('left-0');
-        
-        if (!isOpen) {
-            // Abrir menú
-            mobileMenu.classList.remove('-left-64');
-            mobileMenu.classList.add('left-0');
-            overlay.classList.remove('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
-            document.body.style.overflow = 'hidden';
-        } else {
-            // Cerrar menú
-            mobileMenu.classList.remove('left-0');
-            mobileMenu.classList.add('-left-64');
-            overlay.classList.add('hidden');
-            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-            document.body.style.overflow = 'auto';
-        }
-        
-        mobileMenuButton.setAttribute('aria-expanded', !isOpen);
-    }
+    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
 
     mobileMenuButton.addEventListener('click', (e) => {
         e.stopPropagation();
-        toggleMobileMenu();
-    });
 
-    // Cerrar menú al hacer clic en el overlay
-    overlay.addEventListener('click', toggleMobileMenu);
+        const isOpen = mobileMenu.classList.contains('translate-x-0');
 
-    // Cerrar menú al hacer clic en cualquier enlace móvil
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', toggleMobileMenu);
-    });
-
-    // Cerrar menú al cambiar tamaño de pantalla
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) { // md breakpoint
-            if (mobileMenu.classList.contains('left-0')) {
-                toggleMobileMenu();
-            }
+        if (isOpen) {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            document.body.style.overflow = 'auto';
+        } else {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            document.body.style.overflow = 'hidden';
         }
+
+        mobileMenuButton.setAttribute('aria-expanded', !isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+        mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = 'auto';
+    });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = 'auto';
+        });
     });
 </script>
