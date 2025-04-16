@@ -102,7 +102,7 @@
                         }
 
                         // Verificar primero la conexión con EmailJS
-                        emailjs.send('service_yi2dbrp', 'template_a0qtsle', {
+                        emailjs.send('service_9f6i9yr', 'template_a0qtsle', {
                             from_name: form.name.value,
                             from_email: form.email.value,
                             message: form.message.value
@@ -141,8 +141,8 @@
                             console.error('EmailJS no se ha cargado correctamente');
                         } else {
                             console.log('EmailJS cargado correctamente');
-                            emailjs.init('4oHfMsFv59ttu2bJn');
-                            console.log('EmailJS inicializado con user ID:', '4oHfMsFv59ttu2bJn');
+                            emailjs.init('y9Igh3TPptu7H-zVh');
+                            console.log('EmailJS inicializado con user ID:', 'y9Igh3TPptu7H-zVh');
                         }
                     });
                 </script>
@@ -152,7 +152,7 @@
                 <script>
                     // Inicialización con verificación de estado
                     (function() {
-                        emailjs.init('4oHfMsFv59ttu2bJn');
+                        emailjs.init('y9Igh3TPptu7H-zVh');
                         console.log('EmailJS initialized with service:', emailjs.getServiceStatus());
                     })();
                 </script>
