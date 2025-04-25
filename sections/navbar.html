@@ -73,9 +73,8 @@
         </div>
 
         <!-- Menú lateral móvil -->
-        <div id="mobile-menu"
-            class="md:hidden bg-gray-900 w-64 h-screen fixed top-0 right-0 transform translate-x-full transition-transform duration-300 z-50">
-            <ul class="flex flex-col p-4 space-y-4 text-white">
+        <div id="mobile-menu" class="md:hidden">
+            <ul>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#especializacion">Especialización</a></li>
                 <li><a href="#tecnologias">Tecnologías</a></li>
@@ -89,6 +88,7 @@
 <!-- Forzar Tailwind a compilar translate-x-0 -->
 <div class="hidden translate-x-0 translate-x-full"></div>
 
+<link rel="stylesheet" href="../styles/mobile-menu.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
