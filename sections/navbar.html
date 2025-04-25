@@ -101,18 +101,16 @@
         const menuLinks = menu.querySelectorAll('a'); // todos los enlaces dentro del menú
 
         function toggleMenu(forceClose = false) {
-            const isOpen = menu.classList.contains('translate-x-0');
+            const isOpen = menu.classList.contains('open');
             const shouldClose = forceClose || isOpen;
 
             if (shouldClose) {
-                menu.classList.remove('translate-x-0');
-                menu.classList.add('translate-x-full');
+                menu.classList.remove('open');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
                 btn.setAttribute('aria-expanded', 'false');
             } else {
-                menu.classList.remove('translate-x-full');
-                menu.classList.add('translate-x-0');
+                menu.classList.add('open');
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
                 btn.setAttribute('aria-expanded', 'true');
