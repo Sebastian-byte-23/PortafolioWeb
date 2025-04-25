@@ -16,26 +16,7 @@ button, a {
     min-height: 44px;
 }
 
-/* Animación y estilos para el menú móvil */
-#mobile-menu {
-    top: 100%;
-    z-index: 1000;
-    transform: translateY(-150%);
-    transition: transform 0.3s ease-in-out;
-}
-
-#mobile-menu.show {
-    transform: translateY(0);
-}
-
-.nav-link-mobile {
-    padding: 0.75rem 1rem;
-    transition: all 0.3s ease;
-}
-
+/* Estilos generales para móviles */
 @media (max-width: 768px) {
-    #mobile-menu {
-        max-height: calc(100vh - 4rem);
-        overflow-y: auto;
-    }
+    /* Puedes agregar aquí estilos generales para móviles si son necesarios */
 }
