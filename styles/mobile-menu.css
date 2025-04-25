@@ -9,12 +9,13 @@
     transform: translateX(100%);
     transition: transform 300ms ease-in-out;
     z-index: 50;
-    display: none; /* Oculto por defecto */
+    display: block; /* Cambiado a block */
+    visibility: hidden; /* Oculto pero manteniendo espacio */
 }
 
 #mobile-menu.open {
     transform: translateX(0);
-    display: block; /* Mostrar cuando tenga clase 'open' */
+    visibility: visible; /* Mostrar cuando tenga clase 'open' */
 }
 
 #mobile-menu ul {

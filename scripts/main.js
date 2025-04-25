@@ -34,8 +34,18 @@ window.includeHTML = async function(id, file) {
 // Cargar las secciones
 // Cargar el navbar desde archivo externo
 includeHTML("navbar", "./sections/navbar.html").then(() => {
-    // Cargar menú móvil después del navbar
-    includeHTML("mobile-menu-container", "./components/mobile-menu.html");
+    // Inicializar el menú móvil
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('mobile-menu-icon');
+    
+    if(btn && menu && icon) {
+        btn.addEventListener('click', function() {
+            menu.classList.toggle('open');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
 });
 
 includeHTML("inicio", "./sections/inicio.html");
