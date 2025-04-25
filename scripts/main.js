@@ -48,7 +48,10 @@ includeHTML("navbar", "./sections/navbar.html").then(() => {
     }
 
     if(btn && menu && icon) {
+        const closeBtn = document.getElementById('close-menu-button');
+        
         btn.addEventListener('click', toggleMenu);
+        closeBtn?.addEventListener('click', toggleMenu);
         
         // Cerrar menú al hacer clic en enlaces
         menuLinks?.forEach(link => {
