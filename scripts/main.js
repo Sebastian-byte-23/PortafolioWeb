@@ -23,10 +23,19 @@ async function includeHTML(id, file) {
     document.getElementById(id).innerHTML = text;
 }
 
+// Hacer includeHTML disponible globalmente
+window.includeHTML = async function(id, file) {
+    let response = await fetch(file);
+    let text = await response.text();
+    document.getElementById(id).innerHTML = text;
+    return Promise.resolve();
+}
+
 // Cargar las secciones
 // Cargar el navbar desde archivo externo
 includeHTML("navbar", "./sections/navbar.html").then(() => {
-    initMobileMenuToggle(); // Ejecuta toggle una vez cargado
+    // Cargar menú móvil después del navbar
+    includeHTML("mobile-menu-container", "./components/mobile-menu.html");
 });
 
 includeHTML("inicio", "./sections/inicio.html");
@@ -37,9 +46,3 @@ includeHTML("proyectos", "./sections/proyectos.html");
 includeHTML("contacto", "./sections/contacto.html");
 
 
-async function includeHTML(id, file) {
-    let response = await fetch(file);
-    let text = await response.text();
-    document.getElementById(id).innerHTML = text;
-    return Promise.resolve(); // 👈 Esto te permite usar .then()
-}
